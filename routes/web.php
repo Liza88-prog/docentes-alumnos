@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
 // Login
+Route::get('/', function () {
+    return view('auth.login'); // esto carga resources/views/auth/login.blade.php
+});
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -14,7 +17,6 @@ Route::post('/register', [AuthController::class, 'register']);
 // Logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Ruta protegida
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('auth');
+    return view('dashboard.index');
+})->middleware('auth')->name('dashboard');

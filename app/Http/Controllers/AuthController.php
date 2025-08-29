@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-
     public function showLogin()
     {
         return view('auth.login');
@@ -24,7 +23,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials, $request->filled('remember'))) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard'); // ruta protegida
+            return redirect()->intended(route('dashboard')); // 🔑 usa nombre
         }
 
         return back()->withErrors([
@@ -37,7 +36,6 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    // 👉 Procesar registro
     public function register(Request $request)
     {
         $data = $request->validate([
@@ -54,9 +52,8 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect('/dashboard');
+        return redirect()->route('dashboard'); // 🔑 usa nombre
     }
-
 
     public function logout(Request $request)
     {
@@ -64,7 +61,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect()->route('login'); // 🔑 usa nombre
     }
 }
-

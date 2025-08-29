@@ -19,6 +19,6 @@ class TeacherController extends Controller
         $activeTeachers = Teacher::where('active', 1)->count();
         $inactiveTeachers = Teacher::where('active', 0)->count();
 
-        return view('dashboard', compact('teachersCount', 'activeTeachers', 'inactiveTeachers'));
+        return view('teachers.dashboard', compact('teachersCount', 'activeTeachers', 'inactiveTeachers'));
     }
 }
