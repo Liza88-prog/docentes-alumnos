@@ -28,7 +28,7 @@
         </div>
 
         <div>
-            <label for="role_id" class="block text-sm font-medium text-gray-700">Rol ID</label>
+            <label for="role_id" class="block text-sm font-medium text-gray-700">Rol ID (1 = ALUMNO 2 = ADMIN)</label>
             <input type="number" name="role_id" id="role_id" required class="mt-1 w-full px-4 py-2 rounded-xl border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 shadow-sm text-gray-700 placeholder-gray-400 @error('role_id') border-red-500 @enderror" value="{{ old('role_id', $user->role_id) }}">
             @error('role_id')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
